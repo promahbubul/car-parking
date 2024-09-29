@@ -38,8 +38,12 @@ const Login = () => {
   }, []);
   return (
     <div className=" w-full bg-base-200 lg:h-screen flex p-5 flex-col lg:flex-row  lg:justify-center gap-8 md:gap-10 items-center">
-      <div className="h-72 mt-10 lg:mt-auto lg:h-full w-full flex justify-center items-center">
-        <img src="/login.png" alt="" className="object-fill h-full w-full  " />
+      <div className="h-72   lg:mt-auto lg:h-full w-full flex justify-center items-center">
+        <img
+          src="/login.png"
+          alt=""
+          className="object-fill md:object-contain h-full w-full  "
+        />
       </div>
       <div className="  lg:h-full w-full flex items-center justify-center">
         <div className="max-w-lg w-full  flex-col lg:flex-row-reverse">
