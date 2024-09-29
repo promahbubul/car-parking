@@ -10,7 +10,7 @@ const Login = () => {
     const form = e.target;
     const user = { email: form.email.value, password: form.password.value };
     axios
-      .post("https://car-parking-backend.vercel.app/login", user, {
+      .post("http://localhost:5600/login", user, {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {
@@ -26,7 +26,7 @@ const Login = () => {
 
   useEffect(() => {
     axios
-      .get("https://car-parking-backend.vercel.app/user-check", {
+      .get("http://localhost:5600/user-check", {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {

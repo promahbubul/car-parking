@@ -13,7 +13,7 @@ const CarList = () => {
   // Delete Car
   const handleDelete = (id) => {
     axios
-      .delete(`https://car-parking-backend.vercel.app/car/${id}`, {
+      .delete(`http://localhost:5600/car/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -29,7 +29,7 @@ const CarList = () => {
   const carOut = (id) => {
     axios
       .put(
-        `https://car-parking-backend.vercel.app/out-car/${id}`,
+        `http://localhost:5600/out-car/${id}`,
         {
           status: "out",
         },
@@ -38,7 +38,7 @@ const CarList = () => {
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           axios
-            .get("https://car-parking-backend.vercel.app/cars", {
+            .get("http://localhost:5600/cars", {
               withCredentials: true,
             })
             .then((res) => {
@@ -51,7 +51,7 @@ const CarList = () => {
 
   useEffect(() => {
     axios
-      .get("https://car-parking-backend.vercel.app/cars", {
+      .get("http://localhost:5600/cars", {
         withCredentials: true,
       })
       .then((res) => {

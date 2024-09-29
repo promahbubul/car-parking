@@ -26,13 +26,9 @@ const EditCarEntry = () => {
     };
 
     axios
-      .put(
-        `https://car-parking-backend.vercel.app/update-car/${data?._id}`,
-        carInfo,
-        {
-          withCredentials: true,
-        }
-      )
+      .put(`http://localhost:5600/update-car/${data?._id}`, carInfo, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data.matchedCount > 0) {
           toast.success("Car Entry Edited Successfully");
