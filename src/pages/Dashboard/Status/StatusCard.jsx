@@ -2,7 +2,7 @@
 const StatusCard = ({ cars, title, className, titleColor }) => {
   return (
     <div
-      className={`col-span-1 group  rounded-2xl cursor-pointer transition-all text-white ${className}`}
+      className={`col-span-1 overflow-hidden group  rounded-2xl cursor-pointer transition-all text-white ${className}`}
     >
       <p className=" text-7xl group-hover:scale-150 transition-all p-10  font-extrabold text-center">
         {cars.length}
