@@ -26,9 +26,13 @@ const EditCarEntry = () => {
     };
 
     axios
-      .put(`http://localhost:8080/update-car/${data?._id}`, carInfo, {
-        withCredentials: true,
-      })
+      .put(
+        `https://pro-car-parking-production.up.railway.app/update-car/${data?._id}`,
+        carInfo,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.matchedCount > 0) {
           console.log(res.data);

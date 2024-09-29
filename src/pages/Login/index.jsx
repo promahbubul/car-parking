@@ -10,7 +10,7 @@ const Login = () => {
     const form = e.target;
     const user = { email: form.email.value, password: form.password.value };
     axios
-      .post("http://localhost:8080/login", user, {
+      .post("https://pro-car-parking-production.up.railway.app/login", user, {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {
@@ -26,7 +26,7 @@ const Login = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/user-check", {
+      .get("https://pro-car-parking-production.up.railway.app/user-check", {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {

@@ -13,7 +13,9 @@ const CarList = () => {
   // Delete Car
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8080/car/${id}`, { withCredentials: true })
+      .delete(`https://pro-car-parking-production.up.railway.app/car/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data.deletedCount > 0) {
           toast.success("Parking deleted successfully");
@@ -27,7 +29,7 @@ const CarList = () => {
   const carOut = (id) => {
     axios
       .put(
-        `http://localhost:8080/out-car/${id}`,
+        `https://pro-car-parking-production.up.railway.app/out-car/${id}`,
         {
           status: "out",
         },
@@ -36,7 +38,9 @@ const CarList = () => {
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           axios
-            .get("http://localhost:8080/cars", { withCredentials: true })
+            .get("https://pro-car-parking-production.up.railway.app/cars", {
+              withCredentials: true,
+            })
             .then((res) => {
               console.log(res?.data);
               setCars(res?.data);
@@ -48,7 +52,9 @@ const CarList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/cars", { withCredentials: true })
+      .get("https://pro-car-parking-production.up.railway.app/cars", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res?.data);
         setCars(res?.data);

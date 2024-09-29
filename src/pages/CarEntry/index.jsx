@@ -31,7 +31,11 @@ const CarEntry = () => {
 
     console.log(carInfo);
     axios
-      .post("http://localhost:8080/add-car", carInfo, { withCredentials: true })
+      .post(
+        "https://pro-car-parking-production.up.railway.app/add-car",
+        carInfo,
+        { withCredentials: true }
+      )
       .then((res) => {
         if (res.data) {
           toast.success("Car Entry Successfully");
@@ -47,7 +51,9 @@ const CarEntry = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/sn", { withCredentials: true })
+      .get("https://pro-car-parking-production.up.railway.app/sn", {
+        withCredentials: true,
+      })
       .then(({ data }) => {
         setSn(data.sn);
         setLoading(false);

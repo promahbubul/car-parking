@@ -6,7 +6,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
   const sortByStatus = (value) => {
     if (value === "") {
       return axios
-        .get("http://localhost:8080/cars", { withCredentials: true })
+        .get("https://pro-car-parking-production.up.railway.app/cars", { withCredentials: true })
         .then((res) => {
           console.log(res?.data);
           setCars(res?.data);
@@ -14,7 +14,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
         });
     }
     axios
-      .get(`http://localhost:8080/car-status/${value}`, {
+      .get(`https://pro-car-parking-production.up.railway.app/car-status/${value}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,7 +28,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
   const handleIdSearch = (sn) => {
     if (sn === "") {
       return axios
-        .get("http://localhost:8080/cars", { withCredentials: true })
+        .get("https://pro-car-parking-production.up.railway.app/cars", { withCredentials: true })
         .then((res) => {
           console.log(res.data);
           setCars(res.data);
@@ -36,7 +36,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
         });
     }
     axios
-      .get(`http://localhost:8080/car-filter/${sn}`, { withCredentials: true })
+      .get(`https://pro-car-parking-production.up.railway.app/car-filter/${sn}`, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         setCars(res.data);

@@ -37,17 +37,23 @@ const routes = createBrowserRouter([
         path: "invoice/:id",
         element: <Invoice />,
         loader: ({ params }) =>
-          axios.get(`http://localhost:8080/cars/${params.id}`, {
-            withCredentials: true,
-          }),
+          axios.get(
+            `https://pro-car-parking-production.up.railway.app/cars/${params.id}`,
+            {
+              withCredentials: true,
+            }
+          ),
       },
       {
         path: "edit-car/:id",
         element: <EditCarEntry />,
         loader: ({ params }) =>
-          axios.get(`http://localhost:8080/cars/${params.id}`, {
-            withCredentials: true,
-          }),
+          axios.get(
+            `https://pro-car-parking-production.up.railway.app/cars/${params.id}`,
+            {
+              withCredentials: true,
+            }
+          ),
       },
     ],
   },
@@ -59,9 +65,12 @@ const routes = createBrowserRouter([
     path: "/check-invoice/:id",
     element: <CheckInvoice />,
     loader: ({ params }) =>
-      axios.get(`http://localhost:8080/cars/${params.id}`, {
-        withCredentials: true,
-      }),
+      axios.get(
+        `https://pro-car-parking-production.up.railway.app/cars/${params.id}`,
+        {
+          withCredentials: true,
+        }
+      ),
   },
 ]);
 

@@ -18,7 +18,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/cars", { withCredentials: true })
+      .get("https://pro-car-parking-production.up.railway.app/cars", {
+        withCredentials: true,
+      })
       .then((res) => {
         setCars(res?.data);
         setParkings(res?.data?.filter((car) => car?.status === "parking"));

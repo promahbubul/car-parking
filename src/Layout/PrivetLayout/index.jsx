@@ -8,7 +8,7 @@ const PrivetLayout = ({ children }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/user-check", {
+      .get("https://pro-car-parking-production.up.railway.app/user-check", {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {
