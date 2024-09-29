@@ -5,8 +5,6 @@ import NotFoundData from "./NotFoundData";
 const CheckInvoice = () => {
   const { data } = useLoaderData();
 
-  console.log(data);
-
   return (
     <div>
       <div className="mt-20"></div>

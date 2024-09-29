@@ -29,10 +29,9 @@ const CarEntry = () => {
       sn,
     };
 
-    console.log(carInfo);
     axios
       .post(
-        "https://pro-car-parking-production.up.railway.app/add-car",
+        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/add-car",
         carInfo,
         { withCredentials: true }
       )
@@ -40,7 +39,7 @@ const CarEntry = () => {
         if (res.data) {
           toast.success("Car Entry Successfully");
           navigate(`/invoice/${res.data.insertedId}`);
-          console.log(res.data);
+
           const newSn = sn + 1;
           setSn(newSn);
           form.reset();
@@ -51,16 +50,18 @@ const CarEntry = () => {
 
   useEffect(() => {
     axios
-      .get("https://pro-car-parking-production.up.railway.app/sn", {
-        withCredentials: true,
-      })
+      .get(
+        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/sn",
+        {
+          withCredentials: true,
+        }
+      )
       .then(({ data }) => {
         setSn(data.sn);
         setLoading(false);
       });
   }, [sn]);
 
-  console.log(sn);
   return (
     <>
       {loading ? (

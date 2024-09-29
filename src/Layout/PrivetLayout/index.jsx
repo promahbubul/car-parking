@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -8,16 +9,19 @@ const PrivetLayout = ({ children }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://pro-car-parking-production.up.railway.app/user-check", {
-        withCredentials: true, // Ensures cookies are sent and received
-      })
+      .get(
+        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/user-check",
+        {
+          withCredentials: true, // Ensures cookies are sent and received
+        }
+      )
       .then(({ data }) => {
         setIsLogin(data);
         setLoading(false);
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(isLogin);
+
   if (loading) {
     return <Loading />;
   }

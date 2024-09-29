@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
         element: <Invoice />,
         loader: ({ params }) =>
           axios.get(
-            `https://pro-car-parking-production.up.railway.app/cars/${params.id}`,
+            `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars/${params.id}`,
             {
               withCredentials: true,
             }
@@ -49,7 +49,7 @@ const routes = createBrowserRouter([
         element: <EditCarEntry />,
         loader: ({ params }) =>
           axios.get(
-            `https://pro-car-parking-production.up.railway.app/cars/${params.id}`,
+            `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars/${params.id}`,
             {
               withCredentials: true,
             }
@@ -66,7 +66,7 @@ const routes = createBrowserRouter([
     element: <CheckInvoice />,
     loader: ({ params }) =>
       axios.get(
-        `https://pro-car-parking-production.up.railway.app/cars/${params.id}`,
+        `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars/${params.id}`,
         {
           withCredentials: true,
         }

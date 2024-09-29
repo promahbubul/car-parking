@@ -1,10 +1,9 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { sidebarLinksData } from "../../constant/home.constant";
 import { CiLogout } from "react-icons/ci";
 import Cookies from "js-cookie";
 
 const Sidebar = () => {
-  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -12,7 +11,7 @@ const Sidebar = () => {
     navigate("/login");
   };
 
-  console.log(pathname);
+  
 
   return (
     <div className="hidden lg:block w-[370px] lg:h-screen bg-base-300">

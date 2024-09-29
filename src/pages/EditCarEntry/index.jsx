@@ -27,7 +27,7 @@ const EditCarEntry = () => {
 
     axios
       .put(
-        `https://pro-car-parking-production.up.railway.app/update-car/${data?._id}`,
+        `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/update-car/${data?._id}`,
         carInfo,
         {
           withCredentials: true,
@@ -35,7 +35,6 @@ const EditCarEntry = () => {
       )
       .then((res) => {
         if (res.data.matchedCount > 0) {
-          console.log(res.data);
           toast.success("Car Entry Edited Successfully");
           navigate("/list-cars");
         }

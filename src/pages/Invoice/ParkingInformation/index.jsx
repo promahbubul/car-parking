@@ -4,7 +4,7 @@ import styles from "../styles";
 import TableData from "./TableData";
 
 const ParkingInformation = ({ carName, carNumber, owner, phone, address }) => {
-  // console.log(carName);
+  
   return (
     <View style={styles.parkingInformation}>
       <TableData
