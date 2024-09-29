@@ -6,24 +6,18 @@ const SearchField = ({ setCars, setIsLoading }) => {
   const sortByStatus = (value) => {
     if (value === "") {
       return axios
-        .get(
-          "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars",
-          {
-            withCredentials: true,
-          }
-        )
+        .get("https://car-parking-backend.vercel.app/cars", {
+          withCredentials: true,
+        })
         .then((res) => {
           setCars(res?.data);
           setIsLoading(false);
         });
     }
     axios
-      .get(
-        `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/car-status/${value}`,
-        {
-          withCredentials: true,
-        }
-      )
+      .get(`https://car-parking-backend.vercel.app/car-status/${value}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setCars(res.data);
         setIsLoading(false);
@@ -34,22 +28,18 @@ const SearchField = ({ setCars, setIsLoading }) => {
   const handleIdSearch = (sn) => {
     if (sn === "") {
       return axios
-        .get(
-          "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars",
-          {
-            withCredentials: true,
-          }
-        )
+        .get("https://car-parking-backend.vercel.app/cars", {
+          withCredentials: true,
+        })
         .then((res) => {
           setCars(res.data);
           setIsLoading(false);
         });
     }
     axios
-      .get(
-        `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/car-filter/${sn}`,
-        { withCredentials: true }
-      )
+      .get(`https://car-parking-backend.vercel.app/car-filter/${sn}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setCars(res.data);
       });

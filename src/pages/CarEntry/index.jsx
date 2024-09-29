@@ -30,11 +30,9 @@ const CarEntry = () => {
     };
 
     axios
-      .post(
-        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/add-car",
-        carInfo,
-        { withCredentials: true }
-      )
+      .post("https://car-parking-backend.vercel.app/add-car", carInfo, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data) {
           toast.success("Car Entry Successfully");
@@ -50,12 +48,9 @@ const CarEntry = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/sn",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("https://car-parking-backend.vercel.app/sn", {
+        withCredentials: true,
+      })
       .then(({ data }) => {
         setSn(data.sn);
         setLoading(false);

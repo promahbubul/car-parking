@@ -18,12 +18,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("https://car-parking-backend.vercel.app/cars", {
+        withCredentials: true,
+      })
       .then((res) => {
         setCars(res?.data);
         setParkings(res?.data?.filter((car) => car?.status === "parking"));

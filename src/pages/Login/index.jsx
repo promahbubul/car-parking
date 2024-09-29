@@ -10,13 +10,9 @@ const Login = () => {
     const form = e.target;
     const user = { email: form.email.value, password: form.password.value };
     axios
-      .post(
-        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/login",
-        user,
-        {
-          withCredentials: true, // Ensures cookies are sent and received
-        }
-      )
+      .post("https://car-parking-backend.vercel.app/login", user, {
+        withCredentials: true, // Ensures cookies are sent and received
+      })
       .then(({ data }) => {
         if (data.status === 200) {
           navigate("/");
@@ -30,12 +26,9 @@ const Login = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/user-check",
-        {
-          withCredentials: true, // Ensures cookies are sent and received
-        }
-      )
+      .get("https://car-parking-backend.vercel.app/user-check", {
+        withCredentials: true, // Ensures cookies are sent and received
+      })
       .then(({ data }) => {
         if (data.status === 200) {
           navigate("/");

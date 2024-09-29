@@ -13,12 +13,9 @@ const CarList = () => {
   // Delete Car
   const handleDelete = (id) => {
     axios
-      .delete(
-        `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/car/${id}`,
-        {
-          withCredentials: true,
-        }
-      )
+      .delete(`https://car-parking-backend.vercel.app/car/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data.deletedCount > 0) {
           toast.success("Parking deleted successfully");
@@ -32,7 +29,7 @@ const CarList = () => {
   const carOut = (id) => {
     axios
       .put(
-        `https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/out-car/${id}`,
+        `https://car-parking-backend.vercel.app/out-car/${id}`,
         {
           status: "out",
         },
@@ -41,12 +38,9 @@ const CarList = () => {
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           axios
-            .get(
-              "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars",
-              {
-                withCredentials: true,
-              }
-            )
+            .get("https://car-parking-backend.vercel.app/cars", {
+              withCredentials: true,
+            })
             .then((res) => {
               setCars(res?.data);
             });
@@ -57,12 +51,9 @@ const CarList = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://fa21fde4-01d7-4f3c-b3c5-f5fcc778b0a7-00-28j99m784pfj1.sisko.replit.dev/cars",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("https://car-parking-backend.vercel.app/cars", {
+        withCredentials: true,
+      })
       .then((res) => {
         setCars(res?.data);
         setIsLoading(false);
