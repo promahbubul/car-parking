@@ -30,7 +30,7 @@ const CarEntry = () => {
     };
 
     axios
-      .post("https://car-parking-backend.vercel.app/add-car", carInfo, {
+      .post("https://car-parking-system.shadhin-bangla.com/add-car", carInfo, {
         withCredentials: true,
       })
       .then((res) => {
@@ -48,7 +48,7 @@ const CarEntry = () => {
 
   useEffect(() => {
     axios
-      .get("https://car-parking-backend.vercel.app/sn", {
+      .get("https://car-parking-system.shadhin-bangla.com/sn", {
         withCredentials: true,
       })
       .then(({ data }) => {

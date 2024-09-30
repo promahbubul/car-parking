@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
         element: <Invoice />,
         loader: ({ params }) =>
           axios.get(
-            `https://car-parking-backend.vercel.app/cars/${params.id}`,
+            `https://car-parking-system.shadhin-bangla.com/cars/${params.id}`,
             {
               withCredentials: true,
             }
@@ -49,7 +49,7 @@ const routes = createBrowserRouter([
         element: <EditCarEntry />,
         loader: ({ params }) =>
           axios.get(
-            `https://car-parking-backend.vercel.app/cars/${params.id}`,
+            `https://car-parking-system.shadhin-bangla.com/cars/${params.id}`,
             {
               withCredentials: true,
             }
@@ -65,9 +65,12 @@ const routes = createBrowserRouter([
     path: "/check-invoice/:id",
     element: <CheckInvoice />,
     loader: ({ params }) =>
-      axios.get(`https://car-parking-backend.vercel.app/cars/${params.id}`, {
-        withCredentials: true,
-      }),
+      axios.get(
+        `https://car-parking-system.shadhin-bangla.com/cars/${params.id}`,
+        {
+          withCredentials: true,
+        }
+      ),
   },
 ]);
 

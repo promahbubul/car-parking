@@ -9,7 +9,7 @@ const PrivetLayout = ({ children }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://car-parking-backend.vercel.app/user-check", {
+      .get("https://car-parking-system.shadhin-bangla.com/user-check", {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {

@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     axios
-      .get("https://car-parking-backend.vercel.app/logout", {
+      .get("https://car-parking-system.shadhin-bangla.com/logout", {
         withCredentials: true,
       })
       .then(({ data }) => {

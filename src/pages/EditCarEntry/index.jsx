@@ -27,7 +27,7 @@ const EditCarEntry = () => {
 
     axios
       .put(
-        `https://car-parking-backend.vercel.app/update-car/${data?._id}`,
+        `https://car-parking-system.shadhin-bangla.com/update-car/${data?._id}`,
         carInfo,
         {
           withCredentials: true,

@@ -11,7 +11,7 @@ const Login = () => {
     const user = { email: form.email.value, password: form.password.value };
     console.log(user);
     axios
-      .post("https://car-parking-backend.vercel.app/login", user, {
+      .post("https://car-parking-system.shadhin-bangla.com/login", user, {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {
@@ -28,7 +28,7 @@ const Login = () => {
 
   useEffect(() => {
     axios
-      .get("https://car-parking-backend.vercel.app/user-check", {
+      .get("https://car-parking-system.shadhin-bangla.com/user-check", {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {

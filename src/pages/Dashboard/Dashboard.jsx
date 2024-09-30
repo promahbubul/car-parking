@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("https://car-parking-backend.vercel.app/cars", {
+      .get("https://car-parking-system.shadhin-bangla.com/cars", {
         withCredentials: true,
       })
       .then((res) => {
