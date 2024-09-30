@@ -6,7 +6,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
   const sortByStatus = (value) => {
     if (value === "") {
       return axios
-        .get("http://localhost:5600/cars", {
+        .get("https://car-parking-backend.vercel.app/cars", {
           withCredentials: true,
         })
         .then((res) => {
@@ -15,7 +15,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
         });
     }
     axios
-      .get(`http://localhost:5600/car-status/${value}`, {
+      .get(`https://car-parking-backend.vercel.app/car-status/${value}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,7 +28,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
   const handleIdSearch = (sn) => {
     if (sn === "") {
       return axios
-        .get("http://localhost:5600/cars", {
+        .get("https://car-parking-backend.vercel.app/cars", {
           withCredentials: true,
         })
         .then((res) => {
@@ -37,7 +37,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
         });
     }
     axios
-      .get(`http://localhost:5600/car-filter/${sn}`, {
+      .get(`https://car-parking-backend.vercel.app/car-filter/${sn}`, {
         withCredentials: true,
       })
       .then((res) => {

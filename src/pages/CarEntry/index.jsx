@@ -30,7 +30,7 @@ const CarEntry = () => {
     };
 
     axios
-      .post("http://localhost:5600/add-car", carInfo, {
+      .post("https://car-parking-backend.vercel.app/add-car", carInfo, {
         withCredentials: true,
       })
       .then((res) => {
@@ -48,7 +48,7 @@ const CarEntry = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5600/sn", {
+      .get("https://car-parking-backend.vercel.app/sn", {
         withCredentials: true,
       })
       .then(({ data }) => {

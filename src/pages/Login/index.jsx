@@ -9,11 +9,13 @@ const Login = () => {
     e.preventDefault();
     const form = e.target;
     const user = { email: form.email.value, password: form.password.value };
+    console.log(user);
     axios
-      .post("http://localhost:5600/login", user, {
+      .post("https://car-parking-backend.vercel.app/login", user, {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {
+        console.log(data);
         if (data.status === 200) {
           navigate("/");
           toast.success("Login Successfully");
@@ -26,7 +28,7 @@ const Login = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5600/user-check", {
+      .get("https://car-parking-backend.vercel.app/user-check", {
         withCredentials: true, // Ensures cookies are sent and received
       })
       .then(({ data }) => {

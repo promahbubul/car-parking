@@ -1,17 +1,25 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { sidebarLinksData } from "../../constant/home.constant";
 import { CiLogout } from "react-icons/ci";
-import Cookies from "js-cookie";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    Cookies.remove("token");
-    navigate("/login");
+    axios
+      .get("https://car-parking-backend.vercel.app/logout", {
+        withCredentials: true,
+      })
+      .then(({ data }) => {
+        if (data?.success) {
+          toast.success(data?.message);
+          navigate("/login");
+        }
+      })
+      .catch((err) => console.error(err));
   };
-
-  
 
   return (
     <div className="hidden lg:block w-[370px] lg:h-screen bg-base-300">
