@@ -1,5 +1,3 @@
-import axios from "axios";
-import toast from "react-hot-toast";
 import { IoCheckmarkDoneCircleSharp, IoEyeSharp } from "react-icons/io5";
 import { MdDelete, MdModeEditOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
