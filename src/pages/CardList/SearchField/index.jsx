@@ -1,9 +1,11 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 /* eslint-disable react/prop-types */
 const SearchField = ({ setCars, setIsLoading }) => {
   // sort by status
   const sortByStatus = (value) => {
+    const toastId = toast.loading("Parking cars search...");
     if (value === "") {
       return axios
         .get("https://car-parking-system.shadhin-bangla.com/cars", {
@@ -12,6 +14,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
         .then((res) => {
           setCars(res?.data);
           setIsLoading(false);
+          toast.dismiss(toastId);
         });
     }
     axios
@@ -24,11 +27,13 @@ const SearchField = ({ setCars, setIsLoading }) => {
       .then((res) => {
         setCars(res.data);
         setIsLoading(false);
+        toast.dismiss(toastId);
       });
   };
 
   // Search by Input
   const handleIdSearch = (sn) => {
+    const toastID = toast.loading("car searching...");
     if (sn === "") {
       return axios
         .get("https://car-parking-system.shadhin-bangla.com/cars", {
@@ -36,7 +41,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
         })
         .then((res) => {
           setCars(res.data);
-          setIsLoading(false);
+          toast.dismiss(toastID);
         });
     }
     axios
@@ -45,6 +50,7 @@ const SearchField = ({ setCars, setIsLoading }) => {
       })
       .then((res) => {
         setCars(res.data);
+        toast.dismiss(toastID);
       });
   };
   return (
@@ -62,9 +68,6 @@ const SearchField = ({ setCars, setIsLoading }) => {
           onChange={(e) => sortByStatus(e.target.value)}
           className="select select-accent w-full md:w-full  md:max-w-xs"
         >
-          <option disabled selected>
-            Parking or Out select
-          </option>
           <option value={""}>All</option>
           <option value={"parking"}>Parking</option>
           <option value={"out"}>Out</option>

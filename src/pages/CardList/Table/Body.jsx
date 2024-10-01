@@ -10,7 +10,7 @@ const Body = ({ cars, handleDelete, carOut }) => {
     <tbody>
       {cars?.length > 0 &&
         cars?.map((car, index) => (
-          <tr key={car?._id}>
+          <tr key={index}>
             <th>{index + 1}</th>
             <th>{car?.sn}</th>
             <td>{car?.carName}</td>

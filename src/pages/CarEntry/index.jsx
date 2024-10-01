@@ -10,6 +10,7 @@ const CarEntry = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const handleAddCar = (e) => {
+    const toastId = toast.loading("Adding Car");
     e.preventDefault();
     const form = e.target;
 
@@ -35,15 +36,17 @@ const CarEntry = () => {
       })
       .then((res) => {
         if (res.data) {
-          toast.success("Car Entry Successfully");
+          toast.success("Car Entry Successfully", { id: toastId });
           navigate(`/invoice/${res.data.insertedId}`);
-
           const newSn = sn + 1;
           setSn(newSn);
           form.reset();
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        toast.error("Car parking error", { id: toastId });
+        console.error(err);
+      });
   };
 
   useEffect(() => {

@@ -31,7 +31,7 @@ const Invoice = () => {
       },
     };
     QRCode.toDataURL(
-      `http://localhost:5173/check-invoice/${data?._id}`,
+      `https://pro-car-parking.vercel.app/check-invoice/${data?._id}`,
       opts,
       function (err, url) {
         if (err) return console.error(err);

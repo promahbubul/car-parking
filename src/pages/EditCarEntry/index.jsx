@@ -25,6 +25,8 @@ const EditCarEntry = () => {
       address,
     };
 
+    const toastID = toast.loading("Car entry editing...");
+
     axios
       .put(
         `https://car-parking-system.shadhin-bangla.com/update-car/${data?._id}`,
@@ -35,11 +37,14 @@ const EditCarEntry = () => {
       )
       .then((res) => {
         if (res.data.matchedCount > 0) {
-          toast.success("Car Entry Edited Successfully");
+          toast.success("Car Entry update Successfully", { id: toastID });
           navigate("/list-cars");
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        toast.error("car entry update error ");
+        console.error(err);
+      });
   };
 
   return (

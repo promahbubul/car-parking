@@ -12,21 +12,26 @@ const CarList = () => {
 
   // Delete Car
   const handleDelete = (id) => {
+    const toastId = toast.loading("Car Deleting...");
     axios
       .delete(`https://car-parking-system.shadhin-bangla.com/car/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
         if (res.data.deletedCount > 0) {
-          toast.success("Parking deleted successfully");
+          toast.success("Parking deleted successfully", { id: toastId });
           setCars(cars?.filter((car) => car?._id !== id));
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setIsLoading(false);
+        console.error(err);
+      });
   };
 
   // Car Out
   const carOut = (id) => {
+    const tostID = toast.loading("Car Outing...");
     axios
       .put(
         `https://car-parking-system.shadhin-bangla.com/out-car/${id}`,
@@ -43,10 +48,14 @@ const CarList = () => {
             })
             .then((res) => {
               setCars(res?.data);
+              toast.success("Car out successfully", { id: tostID });
             });
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        toast.error("Car added error", { id: tostID });
+        console.error(err);
+      });
   };
 
   useEffect(() => {
@@ -62,16 +71,30 @@ const CarList = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="  h-full w-full ">
+    <div className="h-full w-full ">
       {/* Search Field */}
       <SearchField setCars={setCars} setIsLoading={setIsLoading} />
       {/* Table Data */}
-      <div className="h-[calc(100%-128px)] overflow-y-auto ">
-        <table className="table  ">
-          {/* head */}
-          <Header />
-          <Body cars={cars} carOut={carOut} handleDelete={handleDelete} />
-        </table>
+
+      <div className="h-[calc(100%-128px)] overflow-y-auto">
+        {cars?.length < 1 ? (
+          <div className="w-full mt-8  mx-auto   text-accent text-xl items-center">
+            <img
+              src="https://ev365.online/img/cms/parking_%C5%82adowania_pojazd%C3%B3w_elektrycznych.gif"
+              alt=""
+              className="w-[500px] mx-auto"
+            />
+            <p className="border-b mt-5 max-w-max mx-auto border-b-accent">
+              This car not found
+            </p>
+          </div>
+        ) : (
+          <table className="table  ">
+            {/* head */}
+            <Header />
+            <Body cars={cars} carOut={carOut} handleDelete={handleDelete} />
+          </table>
+        )}
       </div>
     </div>
   );
