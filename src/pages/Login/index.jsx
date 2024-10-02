@@ -39,8 +39,8 @@ const Login = () => {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div className=" w-full bg-base-200 lg:h-screen flex p-5 flex-col lg:flex-row  lg:justify-center gap-8 md:gap-10 items-center">
-      <div className="h-72   lg:mt-auto lg:h-full w-full flex justify-center items-center">
+    <div className=" w-full bg-base-200 h-screen flex p-5 flex-col lg:flex-row  justify-center gap-8 md:gap-10 items-center">
+      <div className="h-52   lg:mt-auto lg:h-full w-full flex justify-center items-center">
         <img
           src="/login.png"
           alt=""
