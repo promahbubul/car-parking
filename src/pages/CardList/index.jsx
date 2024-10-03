@@ -76,7 +76,7 @@ const CarList = () => {
       <SearchField setCars={setCars} setIsLoading={setIsLoading} />
       {/* Table Data */}
 
-      <div className="h-[calc(100%-128px)] overflow-y-auto">
+      <div className="h-[calc(100%-189px)]  overflow-y-auto">
         {cars?.length < 1 ? (
           <div className="w-full mt-8  mx-auto   text-accent text-xl items-center">
             <img

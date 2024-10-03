@@ -32,7 +32,7 @@ const Dashboard = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div>
+    <div className="h-full">
       {/* Parking Status */}
       <Status parkings={parkings} outs={outs} cars={cars} />
       <PieChart data={data} />

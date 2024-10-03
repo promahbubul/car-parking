@@ -1,4 +1,10 @@
-import { Page, View, Document, PDFViewer } from "@react-pdf/renderer";
+import {
+  Page,
+  View,
+  Document,
+  PDFViewer,
+  PDFDownloadLink,
+} from "@react-pdf/renderer";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import styles from "./styles";
 import QRCode from "qrcode";
@@ -46,31 +52,70 @@ const Invoice = () => {
           Back
         </button>
       </div>
-      <PDFViewer height={"100%"} className="h-[calc(100%-68px)] w-full">
-        <Document
-          author={"Car Parking"}
-          subject={`${data?.sn}`}
-          title={`${data?.carName} - #ID: ${data?.sn}`}
-          language="English"
-          producer="Mahbubul Alam"
-          creator={"Mahbubul Alam"}
-          keywords="Car Parking System"
-        >
-          <Page size="A6" style={styles.page}>
-            <View style={styles.section}>
-              {/* Information Section */}
-              <View style={styles.topSection}>
-                {/* Company Info */}
-                <CompanyInformation sn={data?.sn} />
-                {/* Parking Info */}
-                <ParkingInformation {...data} />
+      {/* Desktop */}
+      <div className="hidden md:block h-full">
+        <PDFViewer height={"100%"} className="h-[calc(100%-68px)] w-full">
+          <Document
+            author={"Car Parking"}
+            subject={`${data?.sn}`}
+            title={`${data?.carName} - #ID: ${data?.sn}`}
+            language="English"
+            producer="Mahbubul Alam"
+            creator={"Mahbubul Alam"}
+            keywords="Car Parking System"
+          >
+            <Page size="A6" style={styles.page}>
+              <View style={styles.section}>
+                {/* Information Section */}
+                <View style={styles.topSection}>
+                  {/* Company Info */}
+                  <CompanyInformation sn={data?.sn} />
+                  {/* Parking Info */}
+                  <ParkingInformation {...data} />
+                </View>
+                {/* QR Code Section */}
+                <QRCodeSection img={qrImage} />
               </View>
-              {/* QR Code Section */}
-              <QRCodeSection img={qrImage} />
-            </View>
-          </Page>
-        </Document>
-      </PDFViewer>
+            </Page>
+          </Document>
+        </PDFViewer>
+      </div>
+      {/* Mobile */}
+      <div className="md:hidden flex justify-center items-center h-[calc(100vh-208px)]">
+        <PDFDownloadLink
+          className="btn-accent btn btn-md w-full"
+          document={
+            <Document
+              author={"Car Parking"}
+              subject={`${data?.sn}`}
+              title={`${data?.carName} - #ID: ${data?.sn}`}
+              language="English"
+              producer="Mahbubul Alam"
+              creator={"Mahbubul Alam"}
+              keywords="Car Parking System"
+            >
+              <Page size="A6" style={styles.page}>
+                <View style={styles.section}>
+                  {/* Information Section */}
+                  <View style={styles.topSection}>
+                    {/* Company Info */}
+                    <CompanyInformation sn={data?.sn} />
+                    {/* Parking Info */}
+                    <ParkingInformation {...data} />
+                  </View>
+                  {/* QR Code Section */}
+                  <QRCodeSection img={qrImage} />
+                </View>
+              </Page>
+            </Document>
+          }
+          fileName={`id_${data?.sn}`}
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? "Loading document..." : "Download now!"
+          }
+        </PDFDownloadLink>
+      </div>
     </div>
   );
 };

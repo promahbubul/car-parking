@@ -1,10 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { sidebarLinksData } from "../../constant/home.constant";
-import { CgPlayButtonR } from "react-icons/cg";
+import axios from "axios";
+import { CiLogout } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 const MobileMenu = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    axios
+      .get("https://car-parking-system.shadhin-bangla.com/logout", {
+        withCredentials: true,
+      })
+      .then(({ data }) => {
+        if (data?.success) {
+          toast.success(data?.message);
+          navigate("/login");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
-    <div className="h-20 w-full bg-slate-700 fixed bottom-0 justify-between items-center gap-[1px]  flex flex-row md:hidden ">
+    <div className="h-20  w-full bg-slate-700 fixed  bottom-0 justify-between items-center gap-[1px]  flex flex-row lg:hidden ">
       {sidebarLinksData.map((item) => (
         <NavLink
           className={({ isActive }) =>
@@ -19,8 +37,13 @@ const MobileMenu = () => {
           <span className="">{item.title}</span>
         </NavLink>
       ))}
-      <button className="md:px-5 md:py-3 text-sm sm:text-base  font-medium h-full justify-center items-center w-1/3 dark:text-slate-200 flex flex-col   gap-1 hover:bg-accent dark:bg-base-300 bg-gray-300 text-slate-800 hover:text-black">
-        {/* <span className="text-xl">{item.icon()}</span> */}
+      <button
+        onClick={handleLogout}
+        className="md:px-2 md:py-2 text-xs  sm:text-base   h-full justify-center items-center w-[70px] dark:text-slate-200 flex flex-col font-light  gap-1 bg-error text-slate-800 hover:text-black"
+      >
+        <span className="text-xl">
+          <CiLogout />
+        </span>
         <span className="">Logout</span>
       </button>
     </div>

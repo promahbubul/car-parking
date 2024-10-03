@@ -8,7 +8,7 @@ const MainLayout = () => {
       {/* Sidebar */}
       <Sidebar />
       {/* Design */}
-      <div className="p-5 md:p-10 border-2 border-red-500 h-[calc(100vh-80px)] w-full lg:h-screen  overflow-y-auto ">
+      <div className="p-5 md:p-10  h-[calc(100vh-80px)]  w-full lg:h-screen  overflow-y-auto ">
         <Outlet />
       </div>
       {/* Mobile Menu */}

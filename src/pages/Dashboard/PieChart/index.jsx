@@ -13,7 +13,7 @@ const PieChart = ({ data }) => {
     color: "white",
   };
   return (
-    <div className=" dark:bg-transparent bg-slate-800 mt-5 rounded-xl">
+    <div className="h-[calc(100%-324px)]  overflow-hidden lg:h-auto  dark:bg-transparent bg-slate-800 mt-5 rounded-xl">
       <Chart
         chartType="PieChart"
         data={data}
